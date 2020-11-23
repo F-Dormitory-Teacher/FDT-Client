@@ -9,6 +9,8 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="middleGreenColor">#6BA075</color>
-    <color name="GreenColor">#25822E</color>
+    <color name="greenColor">#25822E</color>
     <color name="littleGreenColor">#9EC6A6</color>
+    <color name="littleGray">#EFEDED</color>
+    <color name="grayColor">#746F6F</color>
 </resources>
