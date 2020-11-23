@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/qrFragment"
+        android:icon="@drawable/ic_qr"
+        android:title="QR CODE"/>
+
+    <item
+        android:id="@+id/lostFragment"
+        android:icon="@drawable/ic_find"
+        android:title="분실물 찾기"/>
+
+    <item
+        android:id="@+id/requestFragment"
+        android:icon="@drawable/ic_page_add"
+        android:title="건의하기"/>
+
+    <item
+        android:id="@+id/noticeFragment"
+        android:icon="@drawable/ic_notice"
+        android:title="안내사항"/>
+
+    <item
+        android:id="@+id/myPageFragment"
+        android:icon="@drawable/ic_person"
+        android:title="마이 페이지"/>
+
+</menu>

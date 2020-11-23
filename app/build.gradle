@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -9,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "com.fdt.client"
-        minSdkVersion 16
+        minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -30,6 +32,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures{
+        dataBinding = true
+    }
 }
 
 dependencies {
@@ -39,7 +44,43 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    testImplementation 'junit:junit:4.+'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    //retrofit2
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
+    // okHttp3, logger
+    implementation 'com.github.bumptech.glide:okhttp3-integration:4.11.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
+    // rxJava2
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.19'
+    // rxAndroid2
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    // rxbinding3
+    implementation 'com.jakewharton.rxbinding3:rxbinding:3.0.0'
+
+    // navigation ui
+    implementation "androidx.navigation:navigation-fragment-ktx:2.3.1"
+    implementation "androidx.navigation:navigation-ui-ktx:2.3.1"
+
+    // lifecycle
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.0-beta01'
+
+    // ktx
+    implementation 'androidx.fragment:fragment-ktx:1.2.5'
+
+    //splitties
+    implementation "com.louiscad.splitties:splitties-views-dsl:3.0.0-alpha06"
+    implementation("com.louiscad.splitties:splitties-views-dsl-appcompat:3.0.0-alpha06")
+    implementation("com.louiscad.splitties:splitties-views-dsl-material:3.0.0-alpha06")
+    implementation("com.louiscad.splitties:splitties-fun-pack-android-base:3.0.0-alpha06")
+
+    //shimmer
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
 }

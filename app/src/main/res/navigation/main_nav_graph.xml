@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/qrCodeFragment">
+
+    <fragment
+        android:id="@+id/qrCodeFragment"
+        android:name="com.fdt.client.ui.fragment.main.QrCodeFragment"
+        android:label="fragment_qr_code"
+        tools:layout="@layout/fragment_qr_code" />
+    <fragment
+        android:id="@+id/lostFragment"
+        android:name="com.fdt.client.ui.fragment.main.LostFragment"
+        android:label="fragment_lost"
+        tools:layout="@layout/fragment_lost" />
+    <fragment
+        android:id="@+id/requestFragment"
+        android:name="com.fdt.client.ui.fragment.main.RequestFragment"
+        android:label="fragment_request"
+        tools:layout="@layout/fragment_request" />
+    <fragment
+        android:id="@+id/noticeFragment"
+        android:name="com.fdt.client.ui.fragment.main.NoticeFragment"
+        android:label="fragment_notice"
+        tools:layout="@layout/fragment_notice" />
+    <fragment
+        android:id="@+id/myPageFragment"
+        android:name="com.fdt.client.ui.fragment.main.MyPageFragment"
+        android:label="fragment_my_page"
+        tools:layout="@layout/fragment_my_page" />
+
+</navigation>
