@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">FDT-Client</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="date_tv">날짜 : %s</string>
+    <string name="place_tv">장소 : %s</string>
+    <string name="state_tv">진행 상태 : %s</string>
+    <string name="writer_tv">글쓴이 : %s</string>
 </resources>
