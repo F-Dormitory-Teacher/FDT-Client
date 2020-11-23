@@ -1,14 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragment.main.QrCodeFragment">
+    tools:context=".ui.fragment.main.qrcode.QrCodeFragment">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="QRCode"
-        android:textSize="45sp" />
+        android:id="@+id/qr_code_main_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/notosanskr_bold"
+        android:includeFontPadding="false"
+        android:text="점호인증 QR CODE"
+        android:textColor="@color/greenColor"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/qr_code_gl_left"
+        app:layout_constraintTop_toTopOf="@+id/qr_code_gl_top" />
+
+    <TextView
+        android:id="@+id/qr_code_detail_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
+        android:text="QR CODE는 소프트웨어마이스터고등학에서 \n 아침,저녁 점호를 무인으로 할 수 있도록 도와줍니다."
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/qr_code_gl_middle"
+        app:layout_constraintStart_toStartOf="@+id/qr_code_gl_left" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="@color/greenColor"
+        app:layout_constraintBottom_toTopOf="@+id/qr_code_gl_middle"
+        app:layout_constraintEnd_toEndOf="@id/qr_code_gl_right"
+        app:layout_constraintStart_toStartOf="@+id/qr_code_gl_left" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/qr_code_card_view"
+        android:layout_width="320dp"
+        android:layout_height="400dp"
+        android:backgroundTint="@color/littleGray"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/qr_code_gl_right"
+        app:layout_constraintStart_toStartOf="@+id/qr_code_gl_left"
+        app:layout_constraintTop_toTopOf="@+id/qr_code_gl_middle">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_green_add" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/qr_code_gl_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.06" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/qr_code_gl_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.94" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/qr_code_gl_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/qr_code_gl_middle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.22" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
