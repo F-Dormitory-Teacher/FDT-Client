@@ -4,16 +4,92 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragment.main.LostFragment">
+    tools:context=".ui.fragment.main.lost.LostFragment">
 
     <TextView
+        android:id="@+id/lost_main_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="lost"
-        android:textSize="45sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:fontFamily="@font/notosanskr_bold"
+        android:includeFontPadding="false"
+        android:text="분실물 찾기"
+        android:textColor="@color/greenColor"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/lost_gl_left"
+        app:layout_constraintTop_toTopOf="@+id/lost_gl_top" />
+
+    <TextView
+        android:id="@+id/lost_detail_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
+        android:text="분실물 찾기는 소프트웨어마이스터고등학교에서 \n 분실물을 찾는 것을 도와줍니다."
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/lost_gl_middle"
+        app:layout_constraintStart_toStartOf="@+id/lost_gl_left" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="@color/greenColor"
+        app:layout_constraintBottom_toTopOf="@+id/lost_gl_middle"
+        app:layout_constraintEnd_toEndOf="@id/lost_gl_right"
+        app:layout_constraintStart_toStartOf="@+id/lost_gl_left" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        tools:listitem="@layout/item_lost"
+        app:layout_constraintBottom_toTopOf="@+id/lost_gl_bottom"
+        app:layout_constraintEnd_toStartOf="@+id/lost_gl_right"
+        app:layout_constraintStart_toStartOf="@+id/lost_gl_left"
+        app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:background="@color/greenColor"
+        android:src="@drawable/ic_white_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/lost_gl_bottom"
+        app:layout_constraintEnd_toStartOf="@+id/lost_gl_right" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/lost_gl_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.06" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/lost_gl_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.94" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/lost_gl_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/lost_gl_middle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.22" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/lost_gl_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.96" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
