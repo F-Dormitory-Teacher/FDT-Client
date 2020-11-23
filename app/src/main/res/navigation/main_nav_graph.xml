@@ -7,27 +7,27 @@
 
     <fragment
         android:id="@+id/qrCodeFragment"
-        android:name="com.fdt.client.ui.fragment.main.QrCodeFragment"
+        android:name="com.fdt.client.ui.fragment.main.qrcode.QrCodeFragment"
         android:label="fragment_qr_code"
         tools:layout="@layout/fragment_qr_code" />
     <fragment
         android:id="@+id/lostFragment"
-        android:name="com.fdt.client.ui.fragment.main.LostFragment"
+        android:name="com.fdt.client.ui.fragment.main.lost.LostFragment"
         android:label="fragment_lost"
         tools:layout="@layout/fragment_lost" />
     <fragment
         android:id="@+id/requestFragment"
-        android:name="com.fdt.client.ui.fragment.main.RequestFragment"
+        android:name="com.fdt.client.ui.fragment.main.request.RequestFragment"
         android:label="fragment_request"
         tools:layout="@layout/fragment_request" />
     <fragment
         android:id="@+id/noticeFragment"
-        android:name="com.fdt.client.ui.fragment.main.NoticeFragment"
+        android:name="com.fdt.client.ui.fragment.main.notice.NoticeFragment"
         android:label="fragment_notice"
         tools:layout="@layout/fragment_notice" />
     <fragment
         android:id="@+id/myPageFragment"
-        android:name="com.fdt.client.ui.fragment.main.MyPageFragment"
+        android:name="com.fdt.client.ui.fragment.main.mypage.MyPageFragment"
         android:label="fragment_my_page"
         tools:layout="@layout/fragment_my_page" />
 
