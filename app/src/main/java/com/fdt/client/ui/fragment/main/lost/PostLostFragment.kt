@@ -12,13 +12,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import com.fdt.client.R
 import com.fdt.client.data.local.SharedPref
 import com.fdt.client.data.remote.NetRetrofit
+import com.fdt.client.entity.Article
 import com.fdt.client.entity.Lost
+import com.fdt.client.entity.response.Data
 import com.fdt.client.ui.activity.MainActivity
 import com.fdt.client.ui.util.FileUtil
 import kotlinx.android.synthetic.main.fragment_post_lost.*
+import kotlinx.android.synthetic.main.fragment_post_request.*
 import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -49,28 +53,63 @@ class PostLostFragment : Fragment() {
         post_lost_card_view.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK)
             intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*")
-            startActivityForResult(intent, 205)
+            startActivityForResult(intent, 105)
         }
 
         post_lost_complete_btn.setOnClickListener {
-            Log.d("inageUri", FileUtil.uriToFile((requireActivity() as MainActivity).returnUri(),requireContext()) + "df")
-            imageUri = FileUtil.uriToFile((requireActivity() as MainActivity).returnUri(),requireContext())
+            var file: String? = null
+            imageUri = FileUtil.uriToFile(
+                (requireActivity() as MainActivity).returnUri(),
+                requireContext()
+            )
 
-            val lost = Lost(post_lost_title_et.text.toString(), post_lost_place_et.text.toString(), post_lost_content_et.text.toString())
-            val file: MultipartBody.Part = FileUtil.createMultiPart(imageUri)
+            val filePath: MultipartBody.Part = FileUtil.createMultiPart(imageUri)
 
-            val response : Call<Void> = NetRetrofit.getService()!!.postLostProduct(sharedPref.getToken(true),lost)
+            val uploadResponse: Call<Data> =
+                NetRetrofit.getService()!!.uploadImage(sharedPref.getToken(true), filePath)
 
-            response.enqueue(object: Callback<Void> {
-                override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                    if(response.code() == 200 ){
-                        toast("신청 성공")
-                    }else toast("알 수 없는 오류 발생")
+            uploadResponse.enqueue(object : Callback<Data> {
+                override fun onResponse(
+                    call: Call<Data>,
+                    response: Response<Data>
+                ) {
+                    Log.d("code", response.code().toString())
+                    if (response.code() == 200) {
+                        file = response.body()?.data?.files.toString()
+
+                        val lost = Lost(
+                            post_lost_title_et.text.toString(),
+                            post_lost_place_et.text.toString(),
+                            post_lost_content_et.text.toString(),
+                            file.toString()
+                        )
+
+                        val response: Call<Void> =
+                            NetRetrofit.getService()!!
+                                .postLostProduct(sharedPref.getToken(true), lost)
+
+                        response.enqueue(object: Callback<Void>{
+                            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                                if (response.code() == 200) {
+                                    toast("신청 성공")
+                                    Navigation.findNavController(requireView()).popBackStack()
+                                } else toast("알 수 없는 오류 발생")
+                            }
+
+                            override fun onFailure(call: Call<Void>, t: Throwable) {
+                                toast(t.message.toString())
+                            }
+
+                        })
+                    }
                 }
-                override fun onFailure(call: Call<Void>, t: Throwable) {
-                    toast(t.message.toString())
+
+                override fun onFailure(call: Call<Data>, t: Throwable) {
+                    Log.e("error", t.message.toString())
                 }
+
             })
+
         }
     }
 }

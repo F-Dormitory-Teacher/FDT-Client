@@ -4,5 +4,5 @@ data class Lost(
     val title: String,
     val location: String,
     val content: String,
-    val lostStatus: String = "KEEP"
+    val imageUrl:String
 )

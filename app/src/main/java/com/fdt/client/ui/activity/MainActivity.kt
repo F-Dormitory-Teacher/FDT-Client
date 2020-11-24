@@ -14,6 +14,7 @@ import com.fdt.client.data.remote.NetRetrofit
 import com.fdt.client.entity.response.Token
 import com.google.zxing.integration.android.IntentIntegrator
 import com.google.zxing.integration.android.IntentResult
+import kotlinx.android.synthetic.main.fragment_post_lost.*
 import kotlinx.android.synthetic.main.fragment_post_request.*
 import org.json.JSONException
 import org.json.JSONObject
@@ -40,7 +41,13 @@ class MainActivity : AppCompatActivity() {
             selectedImageUri = data?.data!!
             post_request_image.setImageURI(selectedImageUri)
             ic_picture_image.visibility = View.GONE
-        } else {
+        }else if(requestCode == 65641){
+            selectedImageUri = data?.data!!
+            post_lost_image.setImageURI(selectedImageUri)
+            ic_lost_picture.visibility = View.GONE
+        }
+
+        else {
             val result: IntentResult =
                 IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
 
