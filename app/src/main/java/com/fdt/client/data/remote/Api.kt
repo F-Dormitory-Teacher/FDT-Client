@@ -9,4 +9,7 @@ import retrofit2.http.POST
 interface Api {
     @POST("/auth")
     fun postSignIn(@Body user: User) : Call<Token>
+
+    @POST("/attend/createAttend")
+    fun postAttend() : Call<Void>
 }
