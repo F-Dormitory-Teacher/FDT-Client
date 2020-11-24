@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         Log.d("requestCode", requestCode.toString())
-        if (requestCode == 65741) {
+        if (requestCode == 131277) {
             selectedImageUri = data?.data!!
             post_request_image.setImageURI(selectedImageUri)
             ic_picture_image.visibility = View.GONE
@@ -86,4 +86,6 @@ class MainActivity : AppCompatActivity() {
     fun returnUri(): Uri {
         return selectedImageUri
     }
+
+
 }

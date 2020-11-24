@@ -23,5 +23,20 @@ data class DetailLost(
     val location: String,
     val imageUrl: String,
     val lostStatus: String,
-    val createdAt: String
+    val createdAt: String,
+    val userName: String,
+    val userStudentId: String
+)
+
+data class ArrayDetailLost(
+    val idx: Int,
+    val userIdx: Int,
+    val title: String,
+    val content: String,
+    val location: String,
+    val imageUrl: String,
+    val lostStatus: String,
+    val createdAt: String,
+    val userName: String,
+    val userStudentId: String
 )

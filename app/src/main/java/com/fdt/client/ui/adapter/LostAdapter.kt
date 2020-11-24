@@ -1,15 +1,23 @@
 package com.fdt.client.ui.adapter
 
 import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.fdt.client.R
+import com.fdt.client.data.remote.NetRetrofit
 import com.fdt.client.entity.response.DetailLost
+import kotlinx.android.synthetic.main.item_lost.view.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.security.AccessController.getContext
 
-class LostAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class LostAdapter(private val itemClick: (Int) -> Unit) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val lostItems = ArrayList<DetailLost>()
 
@@ -21,7 +29,7 @@ class LostAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is ViewHolder) {
-            holder.bind(lostItems[position], position)
+            holder.bind(lostItems[position], itemClick, lostItems[position].idx)
         }
     }
 
@@ -39,7 +47,7 @@ class LostAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         private var place = itemView.findViewById<TextView>(R.id.item_lost_place)
         private var state = itemView.findViewById<TextView>(R.id.item_lost_state)
 
-        fun bind(item: DetailLost, position: Int) {
+        fun bind(item: DetailLost, itemClick: (Int) -> Unit, position: Int) {
             title.text = item.title
             place.text = "장소 : ${item.location}"
             date.text = "날짜 : ${item.createdAt.substring(0, 10)}"
@@ -50,6 +58,9 @@ class LostAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 state.text = "미보관"
                 state.setTextColor(Color.parseColor("#25822E"))
             }
+
+            Log.d("click", position.toString())
+            itemView.setOnClickListener { itemClick(position) }
         }
     }
 

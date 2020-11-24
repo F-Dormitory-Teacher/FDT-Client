@@ -28,15 +28,22 @@ class LostFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val lostAdapter = LostAdapter()
+        val lostAdapter = LostAdapter { position ->
+            Log.d("asdfasd",position.toString() +"ㅇㄴㅁㄹ")
+            val bundle = Bundle()
+            bundle.putString("idx", position.toString())
+            Navigation.findNavController(requireActivity(), R.id.fragment_container)
+                .navigate(R.id.action_mainFragment_to_detailLostFragment, bundle)
+
+        }
 
         val response: Call<Data> = NetRetrofit.getService()!!.getLostList()
 
-        response.enqueue(object: Callback<Data>{
+        response.enqueue(object : Callback<Data> {
             override fun onResponse(call: Call<Data>, response: Response<Data>) {
-                if(response.code() == 200){
+                if (response.code() == 200) {
 
-                    for(i in response.body()!!.lostProducts.size -1 downTo 0){
+                    for (i in response.body()!!.lostProducts.size - 1 downTo 0) {
                         lostAdapter.add(response.body()!!.lostProducts[i])
                     }
 
@@ -46,7 +53,7 @@ class LostFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<Data>, t: Throwable) {
-                Log.e("error",t.message.toString())
+                Log.e("error", t.message.toString())
             }
 
         })
@@ -58,7 +65,8 @@ class LostFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         lost_add_btn.setOnClickListener {
-            Navigation.findNavController(requireActivity(),R.id.fragment_container).navigate(R.id.action_mainFragment_to_postLostFragment)
+            Navigation.findNavController(requireActivity(), R.id.fragment_container)
+                .navigate(R.id.action_mainFragment_to_postLostFragment)
         }
     }
 }

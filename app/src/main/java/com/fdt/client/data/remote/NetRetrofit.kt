@@ -14,7 +14,7 @@ object NetRetrofit {
     val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
 
     var retrofit = Retrofit.Builder()
-        .baseUrl("http://172.30.1.35:8080")
+        .baseUrl("http://192.168.43.111:8080")
         .client(client)
         .addConverterFactory(GsonConverterFactory.create())
         .build()

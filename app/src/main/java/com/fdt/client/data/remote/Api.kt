@@ -43,4 +43,7 @@ interface Api {
 
     @GET("/notice/getNotices")
     fun getAllNoticeList(): Call<NoticeData>
+
+    @GET("/lost-product/getLostInfo/{idx}")
+    fun getDetailLost(@Path("idx") id: Int): Call<LostData>
 }
