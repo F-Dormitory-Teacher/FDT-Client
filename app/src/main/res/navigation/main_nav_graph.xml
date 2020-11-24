@@ -30,5 +30,9 @@
         android:name="com.fdt.client.ui.fragment.main.mypage.MyPageFragment"
         android:label="fragment_my_page"
         tools:layout="@layout/fragment_my_page" />
-
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.fdt.client.ui.fragment.login.LoginFragment"
+        android:label="fragment_login_page"
+        tools:layout="@layout/fragment_login"/>
 </navigation>
