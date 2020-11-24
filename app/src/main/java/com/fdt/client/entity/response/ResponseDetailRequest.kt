@@ -14,3 +14,14 @@ data class DetailRequest(
     val status: String,
     val userName: String
 )
+
+data class DetailLost(
+    val idx: Int,
+    val userIdx: Int,
+    val title: String,
+    val content: String,
+    val location: String,
+    val imageUrl: String,
+    val lostStatus: String,
+    val createdAt: String
+)

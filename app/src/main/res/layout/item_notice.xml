@@ -12,20 +12,20 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/item_lost_title"
+            android:id="@+id/item_notice_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/notosanskr_medium"
             android:includeFontPadding="false"
             android:text="11/23 공지사항 "
-            app:layout_constraintBottom_toTopOf="@id/item_lost_date"
+            app:layout_constraintBottom_toTopOf="@id/item_notice_date"
             android:textColor="@color/greenColor"
-            android:textSize="14sp"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@+id/guideline"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/item_lost_date"
+            android:id="@+id/item_notice_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/notosanskr_regular"
@@ -35,8 +35,21 @@
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/item_lost_title" />
+            app:layout_constraintTop_toBottomOf="@+id/item_notice_title" />
 
+        <TextView
+            android:id="@+id/item_notice_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
+            android:text="아침"
+            android:textColor="@color/greenColor"
+            android:layout_marginEnd="24dp"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"

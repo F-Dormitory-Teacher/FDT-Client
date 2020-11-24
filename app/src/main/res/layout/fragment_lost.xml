@@ -41,6 +41,7 @@
         app:layout_constraintStart_toStartOf="@+id/lost_gl_left" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/lost_recycler_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
         tools:listitem="@layout/item_lost"
