@@ -23,7 +23,14 @@ class FirstRegisterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         first_register_next_btn.setOnClickListener {
-            Navigation.findNavController(requireView()).navigate(R.id.action_firstRegisterFragment_to_secondRegisterFragment)
+            if (first_register_name_et.text != null && first_register_school_number_et.text != null) {
+                val bundle = Bundle()
+                bundle.putString("userName", first_register_name_et.text.toString())
+                bundle.putString("schoolNumber", first_register_school_number_et.text.toString())
+
+                Navigation.findNavController(requireView())
+                    .navigate(R.id.action_firstRegisterFragment_to_secondRegisterFragment,bundle)
+            }
         }
     }
 }
