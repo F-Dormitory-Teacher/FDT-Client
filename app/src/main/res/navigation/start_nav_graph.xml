@@ -9,7 +9,17 @@
         android:id="@+id/mainFragment"
         android:name="com.fdt.client.ui.fragment.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_postLostFragment"
+            app:destination="@id/postLostFragment"/>
+        <action
+            android:id="@+id/action_mainFragment_to_detailLostFragment"
+            app:destination="@id/detailLostFragment"/>
+        <action
+            android:id="@+id/action_mainFragment_to_postRequestFragment"
+            app:destination="@id/postRequestFragment"/>
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.fdt.client.ui.fragment.login.LoginFragment"
@@ -45,4 +55,19 @@
         android:name="com.fdt.client.ui.fragment.register.CompleteRegisterFragment"
         android:label="fragment_complete_register"
         tools:layout="@layout/fragment_complete_register" />
+    <fragment
+        android:id="@+id/detailLostFragment"
+        android:name="com.fdt.client.ui.fragment.main.lost.DetailLostFragment"
+        android:label="fragment_detail_lost"
+        tools:layout="@layout/fragment_detail_lost" />
+    <fragment
+        android:id="@+id/postLostFragment"
+        android:name="com.fdt.client.ui.fragment.main.lost.PostLostFragment"
+        android:label="fragment_post_lost"
+        tools:layout="@layout/fragment_post_lost" />
+    <fragment
+        android:id="@+id/postRequestFragment"
+        android:name="com.fdt.client.ui.fragment.main.request.PostRequestFragment"
+        android:label="fragment_post_request"
+        tools:layout="@layout/fragment_post_request" />
 </navigation>
