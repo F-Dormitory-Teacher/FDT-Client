@@ -25,7 +25,7 @@
         android:text="제목 : "
         android:textColor="@color/greenColor"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@id/post_lost_date_tv"
+        app:layout_constraintBottom_toTopOf="@id/post_lost_place_tv"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/post_lost_back_image" />
 
@@ -39,37 +39,9 @@
         android:includeFontPadding="false"
         android:textColor="@color/black"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@id/post_lost_date_tv"
+        app:layout_constraintBottom_toBottomOf="@+id/post_lost_title_tv"
         app:layout_constraintStart_toEndOf="@+id/post_lost_title_tv"
-        app:layout_constraintTop_toBottomOf="@+id/post_lost_back_image" />
-
-    <TextView
-        android:id="@+id/post_lost_date_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:fontFamily="@font/notosanskr_medium"
-        android:includeFontPadding="false"
-        android:text="날짜 : "
-        android:textColor="@color/greenColor"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@id/post_lost_place_tv"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/post_lost_title_tv" />
-
-    <EditText
-        android:id="@+id/post_lost_date_et"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:fontFamily="@font/notosanskr_regular"
-        android:hint="2020/11/23"
-        android:includeFontPadding="false"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@id/post_lost_place_tv"
-        app:layout_constraintStart_toEndOf="@+id/post_lost_date_tv"
-        app:layout_constraintTop_toBottomOf="@+id/post_lost_title_tv" />
+        app:layout_constraintTop_toTopOf="@+id/post_lost_title_tv" />
 
     <TextView
         android:id="@+id/post_lost_place_tv"
@@ -80,10 +52,10 @@
         android:includeFontPadding="false"
         android:text="장소 : "
         android:textColor="@color/greenColor"
+        app:layout_constraintTop_toBottomOf="@id/post_lost_title_tv"
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@id/post_lost_date_tv" />
+        app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
     <EditText
         android:id="@+id/post_lost_place_et"
@@ -95,9 +67,9 @@
         android:includeFontPadding="false"
         android:textColor="@color/greenColor"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline5"
+        app:layout_constraintBottom_toBottomOf="@+id/post_lost_place_tv"
         app:layout_constraintStart_toEndOf="@+id/post_lost_place_tv"
-        app:layout_constraintTop_toBottomOf="@id/post_lost_date_tv" />
+        app:layout_constraintTop_toTopOf="@+id/post_lost_place_tv" />
 
     <TextView
         android:id="@+id/textView"
@@ -114,6 +86,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/post_lost_card_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginHorizontal="24dp"
@@ -139,7 +112,7 @@
     </androidx.cardview.widget.CardView>
 
     <EditText
-        android:id="@+id/post_lost_content_tv"
+        android:id="@+id/post_lost_content_et"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginHorizontal="24dp"
