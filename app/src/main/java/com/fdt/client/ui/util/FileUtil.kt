@@ -15,7 +15,7 @@ import java.io.File
 object FileUtil {
     @RequiresApi(api = Build.VERSION_CODES.O)
     fun uriToFile(uri: Uri?, context: Context): String {
-        val cursor: Cursor = context.getContentResolver().query(uri!!, null, null, null)!!
+        val cursor: Cursor = context.contentResolver.query(uri!!, null, null, null)!!
         cursor.moveToNext()
         val path: String = cursor.getString(cursor.getColumnIndex("_data"))
         cursor.close()
@@ -25,6 +25,6 @@ object FileUtil {
     fun createMultiPart(filePath: String?): MultipartBody.Part {
         val file = File(filePath)
         val requestBody: RequestBody = RequestBody.create("multipart/form-data".toMediaTypeOrNull(), file)
-        return MultipartBody.Part.createFormData("image", file.getName(), requestBody)
+        return MultipartBody.Part.createFormData("files", file.name, requestBody)
     }
 }

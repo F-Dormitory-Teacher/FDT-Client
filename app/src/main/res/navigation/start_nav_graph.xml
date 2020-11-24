@@ -75,5 +75,14 @@
         android:id="@+id/postRequestFragment"
         android:name="com.fdt.client.ui.fragment.main.request.PostRequestFragment"
         android:label="fragment_post_request"
-        tools:layout="@layout/fragment_post_request" />
+        tools:layout="@layout/fragment_post_request" >
+        <action
+            android:id="@+id/action_postRequestFragment_to_requestFragment"
+            app:destination="@id/mainFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/requestFragment"
+        android:name="com.fdt.client.ui.fragment.main.request.RequestFragment"
+        android:label="fragment_request"
+        tools:layout="@layout/fragment_request" />
 </navigation>

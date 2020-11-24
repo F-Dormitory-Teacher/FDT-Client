@@ -6,6 +6,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import com.fdt.client.R
 import com.fdt.client.data.local.SharedPref
@@ -13,6 +14,7 @@ import com.fdt.client.data.remote.NetRetrofit
 import com.fdt.client.entity.response.Token
 import com.google.zxing.integration.android.IntentIntegrator
 import com.google.zxing.integration.android.IntentResult
+import kotlinx.android.synthetic.main.fragment_post_request.*
 import org.json.JSONException
 import org.json.JSONObject
 import retrofit2.Call
@@ -36,6 +38,8 @@ class MainActivity : AppCompatActivity() {
         Log.d("requestCode", requestCode.toString())
         if (requestCode == 65741) {
             selectedImageUri = data?.data!!
+            post_request_image.setImageURI(selectedImageUri)
+            ic_picture_image.visibility = View.GONE
         } else {
             val result: IntentResult =
                 IntentIntegrator.parseActivityResult(requestCode, resultCode, data)

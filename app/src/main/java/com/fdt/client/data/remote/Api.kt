@@ -1,7 +1,11 @@
 package com.fdt.client.data.remote
 
 import com.fdt.client.entity.*
+import com.fdt.client.entity.response.ArticleData
+import com.fdt.client.entity.response.Data
+import com.fdt.client.entity.response.ResponseFile
 import com.fdt.client.entity.response.Token
+import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -26,4 +30,11 @@ interface Api {
 
     @POST("/article/createArticle")
     fun postArticle(@Header("Authorization") jwt: String, @Body article: Article): Call<Void>
+
+    @Multipart
+    @POST("/upload")
+    fun uploadImage(@Header("Authorization") jwt: String, @Part file: MultipartBody.Part): Call<Data>
+
+    @GET("/article/getArticles")
+    fun getArticleList(): Call<ArticleData>
 }
