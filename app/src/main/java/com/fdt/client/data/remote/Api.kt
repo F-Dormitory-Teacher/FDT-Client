@@ -28,6 +28,11 @@ interface Api {
     @POST("/article/createArticle")
     fun postArticle(@Header("Authorization") jwt: String, @Body article: Article): Call<Void>
 
+    @GET("/attend/getMyAttend")
+    fun getMyAttends(@Header("Authorization") jwt: String,
+                     @Query("date")date: String,
+                     @Query("type")type: String): Call<MyPage>
+
     @Multipart
     @POST("/upload")
     fun uploadImage(
