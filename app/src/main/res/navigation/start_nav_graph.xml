@@ -3,11 +3,46 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/start_nav_graph"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.fdt.client.ui.fragment.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.fdt.client.ui.fragment.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_mainFragment"
+            app:destination="@id/mainFragment"/>
+        <action
+            android:id="@+id/action_loginFragment_to_firstRegisterFragment"
+            app:destination="@id/firstRegisterFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/firstRegisterFragment"
+        android:name="com.fdt.client.ui.fragment.register.FirstRegisterFragment"
+        android:label="fragment_first_register"
+        tools:layout="@layout/fragment_first_register" >
+        <action
+            android:id="@+id/action_firstRegisterFragment_to_secondRegisterFragment"
+            app:destination="@id/secondRegisterFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/secondRegisterFragment"
+        android:name="com.fdt.client.ui.fragment.register.SecondRegisterFragment"
+        android:label="fragment_second_register"
+        tools:layout="@layout/fragment_second_register" >
+        <action
+            android:id="@+id/action_secondRegisterFragment_to_completeRegisterFragment"
+            app:destination="@id/completeRegisterFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/completeRegisterFragment"
+        android:name="com.fdt.client.ui.fragment.register.CompleteRegisterFragment"
+        android:label="fragment_complete_register"
+        tools:layout="@layout/fragment_complete_register" />
 </navigation>
