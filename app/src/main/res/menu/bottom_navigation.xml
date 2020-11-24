@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/qrFragment"
+        android:id="@+id/qrCodeFragment"
         android:icon="@drawable/ic_qr"
         android:title="QR CODE"/>
 
