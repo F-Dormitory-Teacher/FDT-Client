@@ -38,32 +38,14 @@ class QrCodeFragment : Fragment() {
 
         detailText.text = spannable
 
-//        val qrScan = IntentIntegrator(requireActivity())
-//
-//        qrCardView.setOnClickListener {
-//            //scan option
-//            qrScan.setPrompt("Scanning..")
-//            //
-//            qrScan.initiateScan()
-//        }
+        val qrScan = IntentIntegrator(requireActivity())
+
+        qrCardView.setOnClickListener {
+            //scan option
+            qrScan.setPrompt("Scanning..")
+            //
+            qrScan.initiateScan()
+        }
         return v
     }
-
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        Log.d("fasdfasdfasdfasdfa","fasdfasdfasdfsa")
-//        val result: IntentResult = IntentIntegrator.parseActivityResult(requestCode,resultCode,data)
-//
-//        if(result == null ){
-//            super.onActivityResult(requestCode, resultCode, data)
-//        }
-//
-//        //qrcode가 없다면
-//        if(result.contents == null){
-//            Toast.makeText(context,"취소", Toast.LENGTH_SHORT).show()
-//            return
-//        }
-//        //qrcode가 있다면
-//        Toast.makeText(context,"스캔 성공", Toast.LENGTH_SHORT).show()
-//
-//    }
 }
