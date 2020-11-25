@@ -9,7 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.fdt.client.R
 import com.fdt.client.entity.response.DetailNotice
 
-class NoticeAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class NoticeAdapter(private val itemClick: (Int) -> Unit) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val noticeItems = ArrayList<DetailNotice>()
 
@@ -21,7 +22,7 @@ class NoticeAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is ViewHolder) {
-            holder.bind(noticeItems[position], position)
+            holder.bind(noticeItems[position], itemClick, noticeItems[position].idx)
         }
     }
 
@@ -38,7 +39,7 @@ class NoticeAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         private var date = itemView.findViewById<TextView>(R.id.item_notice_date)
         private var type = itemView.findViewById<TextView>(R.id.item_notice_type)
 
-        fun bind(item: DetailNotice, position: Int) {
+        fun bind(item: DetailNotice, itemClick: (Int) -> Unit, position: Int) {
             title.text = item.title
             date.text = "날짜 : ${item.createdAt.substring(0, 10)}"
             if (item.type == "MORINING") {
@@ -48,6 +49,8 @@ class NoticeAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 type.text = "저녁"
                 type.setTextColor(Color.parseColor("#25822E"))
             }
+
+            itemView.setOnClickListener { itemClick(position) }
         }
     }
 

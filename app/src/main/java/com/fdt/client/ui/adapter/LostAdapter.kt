@@ -59,7 +59,6 @@ class LostAdapter(private val itemClick: (Int) -> Unit) :
                 state.setTextColor(Color.parseColor("#25822E"))
             }
 
-            Log.d("click", position.toString())
             itemView.setOnClickListener { itemClick(position) }
         }
     }

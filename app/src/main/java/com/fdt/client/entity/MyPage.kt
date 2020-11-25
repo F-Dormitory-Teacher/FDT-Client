@@ -3,8 +3,6 @@ package com.fdt.client.entity
 import java.util.*
 
 data class MyPage(
-    var status : Int,
-    var message : String,
     var data : ResponseMyPage
 )
 
@@ -16,6 +14,6 @@ data class MyAttend (
     var userIdx : Int,
     var type : String,
     var status: String,
-    var date : Date,
+    var date : String,
     var userName : String
 )

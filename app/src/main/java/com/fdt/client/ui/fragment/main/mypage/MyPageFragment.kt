@@ -13,12 +13,14 @@ import com.fdt.client.R
 import com.fdt.client.data.local.SharedPref
 import com.fdt.client.data.remote.NetRetrofit
 import com.fdt.client.entity.MyPage
+import com.fdt.client.entity.response.UserInfo
 import com.fdt.client.ui.dialog.CustomDialog
 import kotlinx.android.synthetic.main.alert_ask_logout.*
 import kotlinx.android.synthetic.main.fragment_my_page.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.http.Header
 import splitties.toast.toast
 import java.text.SimpleDateFormat
 import java.util.*
@@ -39,25 +41,12 @@ class MyPageFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         my_page_log_out_tv.setOnClickListener {
-//            CustomDialog(requireContext())
-//                .setPositiveButton("예") {
-                    Log.d("yes","yes")
-                    //토큰 삭제
-                    Navigation.findNavController(requireActivity(),R.id.fragment_container).navigate(R.id.action_mainFragment_to_loginFragment)
-//                    CustomDialog(requireContext()).dismiss()
-//                    sharedPref.removeToken()
-                    //로그인 화면으로 이동
-                    Toast.makeText(requireContext(), "로그아웃", Toast.LENGTH_SHORT).show()
-                //toast("로그아웃")
-                }
-//                .setNegativeButton("아니요") {
-//                    //로그아웃 취소
-//                    CustomDialog(requireContext()).dismiss()
-//                }
-//                .show()
+            Navigation.findNavController(requireActivity(), R.id.fragment_container)
+                .navigate(R.id.action_mainFragment_to_loginFragment)
 
+            Toast.makeText(requireContext(), "로그아웃", Toast.LENGTH_SHORT).show()
 
-//        }
+        }
 
         //var date = Date(2020, 11,24)
         var sformat = SimpleDateFormat("yyyy-MM-dd")
@@ -68,6 +57,34 @@ class MyPageFragment : Fragment() {
         // 아침 ,저녁 상태 설정
         setStatus(date, "MORNING", my_page_attend_morning)
         setStatus(date, "NIGHT", my_page_attend_night)
+
+        val responseUserInfo: Call<UserInfo> =
+            NetRetrofit.getService()!!.getUserInfo(sharedPref.getToken(true))
+
+        responseUserInfo.enqueue(object : Callback<UserInfo> {
+            override fun onResponse(call: Call<UserInfo>, response: Response<UserInfo>) {
+                Log.d("df",response.code().toString())
+                if (response.code() == 200) {
+                    Log.d("test", response.body()?.data!!.user.name + "ddd")
+
+                    my_page_name_tv.text = response.body()?.data!!.user.studentId
+
+                    val parseSchoolNum = response.body()?.data!!.user.name.substring(
+                        0,
+                        1
+                    ) + "학년 " + response.body()?.data!!.user.name.substring(
+                        1,
+                        2
+                    ) + "반" + response.body()?.data!!.user.name.substring(2, 4) + "번 "
+                    my_page_school_number_tv.text = parseSchoolNum
+                }
+            }
+
+            override fun onFailure(call: Call<UserInfo>, t: Throwable) {
+                Log.e("error UserInfo", t.message.toString())
+            }
+
+        })
 
     }
 
@@ -121,7 +138,7 @@ class MyPageFragment : Fragment() {
 
     //기본 상태 - 공백
     private fun setStatusNONE(statusView: TextView) {
-        statusView.text = ""
+        statusView.text = "결석"
         statusView.setTextColor(getResources().getColor(R.color.black))
     }
 

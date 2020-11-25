@@ -29,9 +29,9 @@ class LostFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val lostAdapter = LostAdapter { position ->
-            Log.d("asdfasd",position.toString() +"ㅇㄴㅁㄹ")
             val bundle = Bundle()
             bundle.putString("idx", position.toString())
+
             Navigation.findNavController(requireActivity(), R.id.fragment_container)
                 .navigate(R.id.action_mainFragment_to_detailLostFragment, bundle)
 

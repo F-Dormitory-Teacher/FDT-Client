@@ -5,6 +5,7 @@ import com.fdt.client.entity.response.*
 import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.http.*
+import java.util.*
 
 interface Api {
     @POST("/auth")
@@ -29,9 +30,11 @@ interface Api {
     fun postArticle(@Header("Authorization") jwt: String, @Body article: Article): Call<Void>
 
     @GET("/attend/getMyAttend")
-    fun getMyAttends(@Header("Authorization") jwt: String,
-                     @Query("date")date: String,
-                     @Query("type")type: String): Call<MyPage>
+    fun getMyAttends(
+        @Header("Authorization") jwt: String,
+        @Query("date") date: String,
+        @Query("type") type: String
+    ): Call<MyPage>
 
     @Multipart
     @POST("/upload")
@@ -51,4 +54,13 @@ interface Api {
 
     @GET("/lost-product/getLostInfo/{idx}")
     fun getDetailLost(@Path("idx") id: Int): Call<LostData>
+
+    @GET("/notice/getNotice/{idx}")
+    fun getDetailNotice(@Path("idx") id: Int): Call<DetailNoticeData>
+
+    @GET("/notice/getNotices")
+    fun getDailyNotice(@Query("date") date: String, @Query("type") type: String): Call<NoticeData>
+
+    @GET("/auth/getMyInfo")
+    fun getUserInfo(@Header("Authorization") jwt: String): Call<UserInfo>
 }

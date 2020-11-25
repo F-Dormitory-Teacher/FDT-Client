@@ -12,6 +12,7 @@ import com.fdt.client.R
 import com.fdt.client.data.local.SharedPref
 import com.fdt.client.data.remote.NetRetrofit
 import com.fdt.client.entity.response.Token
+import com.fdt.client.ui.dialog.NoticeDialogFragment
 import com.google.zxing.integration.android.IntentIntegrator
 import com.google.zxing.integration.android.IntentResult
 import kotlinx.android.synthetic.main.fragment_post_lost.*
@@ -41,13 +42,11 @@ class MainActivity : AppCompatActivity() {
             selectedImageUri = data?.data!!
             post_request_image.setImageURI(selectedImageUri)
             ic_picture_image.visibility = View.GONE
-        }else if(requestCode == 65641){
+        } else if (requestCode == 65641) {
             selectedImageUri = data?.data!!
             post_lost_image.setImageURI(selectedImageUri)
             ic_lost_picture.visibility = View.GONE
-        }
-
-        else {
+        } else {
             val result: IntentResult =
                 IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
 
@@ -56,7 +55,7 @@ class MainActivity : AppCompatActivity() {
                 val obj = JSONObject(result.contents)
 
                 //qrcode가 있다면
-                if (result.contents != null && obj.getString("type") == "NIGHT" || obj.getString("type") == "MORNGING") {
+                if (result.contents != null && obj.getString("type") == "NIGHT" || obj.getString("type") == "MORNING") {
                     val response: Call<Void> =
                         NetRetrofit.getService()!!.postAttend(sharedPref.getToken(true))
 
@@ -64,8 +63,19 @@ class MainActivity : AppCompatActivity() {
                         override fun onResponse(call: Call<Void>, response: Response<Void>) {
                             if (response.code() == 200) {
                                 toast("출석 완료")
+
+                                val bundle = Bundle()
+                                bundle.putString("type", obj.getString("type"))
+
+                                val dialog = NoticeDialogFragment()
+                                dialog.arguments = bundle
+                                dialog.show(this@MainActivity.supportFragmentManager, "NoticeDialogFragment")
+
+
                             } else if (response.code() == 409) {
                                 toast("이미 출석 체크한 유저입니다.")
+                            } else if (response.code() == 403) {
+                                toast("출석 체크 가능한 시간이 아닙니다.")
                             }
                         }
 
