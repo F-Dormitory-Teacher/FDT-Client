@@ -6,25 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragment.register.FirstRegisterFragment">
 
-    <ImageView
-        android:id="@+id/first_register_logo_image"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        app:layout_constraintStart_toStartOf="@+id/guideline13"
-        app:layout_constraintTop_toTopOf="@+id/guideline15" />
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:fontFamily="@font/notosanskr_bold"
         android:includeFontPadding="false"
         android:text="FDT"
         android:textColor="@color/greenColor"
         android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="@+id/first_register_logo_image"
-        app:layout_constraintStart_toEndOf="@+id/first_register_logo_image"
+        app:layout_constraintStart_toStartOf="@+id/guideline13"
         app:layout_constraintTop_toTopOf="@+id/guideline15" />
 
     <com.google.android.material.textfield.TextInputLayout

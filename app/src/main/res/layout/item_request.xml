@@ -18,7 +18,7 @@
             android:fontFamily="@font/notosanskr_regular"
             android:includeFontPadding="false"
             android:text="4층 화장실이 막혔어"
-            app:layout_constraintBottom_toTopOf="@id/item_request_date"
+            app:layout_constraintBottom_toTopOf="@id/item_request_user_name_tv"
             android:textColor="@color/black"
             app:layout_constraintVertical_chainStyle="packed"
             android:layout_marginBottom="16dp"
@@ -27,7 +27,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/item_request_date"
+            android:id="@+id/item_request_user_name_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/notosanskr_regular"
@@ -50,7 +50,7 @@
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/item_request_date" />
+            app:layout_constraintTop_toBottomOf="@+id/item_request_user_name_tv" />
 
         <TextView
             android:id="@+id/item_request_state"

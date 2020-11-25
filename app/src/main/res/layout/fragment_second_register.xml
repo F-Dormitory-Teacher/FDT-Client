@@ -6,25 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragment.register.SecondRegisterFragment">
 
-    <ImageView
-        android:id="@+id/second_register_logo_image"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        app:layout_constraintStart_toStartOf="@+id/guideline13"
-        app:layout_constraintTop_toTopOf="@+id/guideline15" />
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:fontFamily="@font/notosanskr_bold"
         android:includeFontPadding="false"
         android:text="FDT"
         android:textColor="@color/greenColor"
         android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="@+id/second_register_logo_image"
-        app:layout_constraintStart_toEndOf="@+id/second_register_logo_image"
+        app:layout_constraintStart_toStartOf="@+id/guideline13"
         app:layout_constraintTop_toTopOf="@+id/guideline15" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -39,7 +30,6 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/second_register_email_et"
             android:layout_width="match_parent"
-
             android:layout_height="wrap_content"
             android:background="@drawable/gray_raidus_view"
             android:fontFamily="@font/notosanskr_regular"
@@ -93,8 +83,8 @@
         android:id="@+id/second_register_confirm_verify_btn"
         android:layout_width="46dp"
         android:layout_height="28dp"
-        android:layout_marginBottom="4dp"
         android:layout_marginEnd="10dp"
+        android:layout_marginBottom="4dp"
         android:background="@drawable/middle_gray_radius_view"
         android:gravity="center"
         android:text="확인"
@@ -111,7 +101,8 @@
         app:errorEnabled="true"
         app:layout_constraintEnd_toStartOf="@+id/guideline14"
         app:layout_constraintStart_toStartOf="@+id/guideline13"
-        app:layout_constraintTop_toBottomOf="@+id/second_register_verify_code_et_layout">
+        app:layout_constraintTop_toBottomOf="@+id/second_register_verify_code_et_layout"
+        app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/second_register_pw_et"
@@ -121,6 +112,7 @@
             android:fontFamily="@font/notosanskr_regular"
             android:hint="비밀번호"
             android:includeFontPadding="false"
+            android:inputType="textPassword"
             android:padding="10dp"
             android:textColorHint="@color/greenColor"
             android:textSize="14sp" />
@@ -134,7 +126,8 @@
         app:errorEnabled="true"
         app:layout_constraintEnd_toStartOf="@+id/guideline14"
         app:layout_constraintStart_toStartOf="@+id/guideline13"
-        app:layout_constraintTop_toBottomOf="@+id/second_register_pw_et_layout">
+        app:layout_constraintTop_toBottomOf="@+id/second_register_pw_et_layout"
+        app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/second_register_pw_check_et"
@@ -144,6 +137,7 @@
             android:fontFamily="@font/notosanskr_regular"
             android:hint="비밀번호 확인"
             android:includeFontPadding="false"
+            android:inputType="textPassword"
             android:padding="10dp"
             android:textColorHint="@color/greenColor"
             android:textSize="14sp" />

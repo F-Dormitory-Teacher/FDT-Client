@@ -41,6 +41,7 @@
         app:layout_constraintStart_toStartOf="@+id/lost_gl_left" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/lost_recycler_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
         tools:listitem="@layout/item_lost"
@@ -50,6 +51,7 @@
         app:layout_constraintTop_toBottomOf="@+id/view2" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/lost_add_btn"
         android:background="@color/greenColor"
         android:src="@drawable/ic_white_add"
         android:layout_width="wrap_content"
